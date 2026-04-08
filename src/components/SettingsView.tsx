@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Users, Building2, Settings2, Plus, Trash2, Download, Upload, Check, ShieldCheck, AlertCircle, Save, X, Pencil, User, Briefcase, Factory, Shield } from 'lucide-react';
+import { Users, Building2, Settings2, Plus, Trash2, Download, Upload, Check, AlertCircle, Save, X, Pencil, User, Briefcase, Factory, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Specialist, Client, SystemConfig, AppBackup, UserRole } from '../types/settings';
 import type { Project } from '../utils/excel';

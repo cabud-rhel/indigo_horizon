@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Timer, CheckCircle, AlertOctagon, MoreVertical, X, Save, Clock, Trash2, CalendarCheck, Shield, User as UserIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Task } from './TasksView';

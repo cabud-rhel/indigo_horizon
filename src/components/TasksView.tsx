@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CheckCircle, MoreHorizontal, Plus, ChevronDown, User as UserIcon, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { UserRole } from '../types/settings';

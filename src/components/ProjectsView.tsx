@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { LayoutGrid, List, Filter, ArrowUpRight, Search, Activity, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { LayoutGrid, List, ArrowUpRight, Search, Activity, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '../utils/excel';
 
@@ -123,7 +123,7 @@ export const ProjectsView = ({ projects, onProjectClick }: ProjectsViewProps) =>
 const ProjectCard = ({ project, onClick }: { project: Project; onClick: () => void }) => (
   <motion.div 
     layout
-    whileHover={{ y: -8, shadow: '0 20px 40px rgba(0,0,0,0.08)' }}
+    whileHover={{ y: -8, boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}
     onClick={onClick}
     className="bg-surface-container-lowest rounded-[40px] p-7 shadow-sm cursor-pointer group hover:bg-surface-container-low transition-all duration-500 relative overflow-hidden border border-outline-variant/5"
   >

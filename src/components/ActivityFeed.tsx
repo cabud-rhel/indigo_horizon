@@ -1,5 +1,4 @@
-import React from 'react';
-import { History, CheckCircle, UserPlus, TrendingUp, FileText, Plus, Clock, AlertCircle } from 'lucide-react';
+import { History, CheckCircle, UserPlus, TrendingUp, FileText, Clock, AlertCircle } from 'lucide-react';
 import type { Project } from '../utils/excel';
 import type { Task } from './TasksView';
 

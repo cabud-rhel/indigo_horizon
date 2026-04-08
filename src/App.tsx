@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { TopNav } from './components/TopNav';
 import { StatHero } from './components/StatHero';
@@ -18,7 +18,7 @@ import type { Project } from './utils/excel';
 import initialProjectsData from './data/initialProjects.json';
 import slaTasksData from './data/slaTasks.json';
 import initialTasksData from './data/tasks.json';
-import { Plus, Shield } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import type { Specialist, Client, SystemConfig, AppBackup, UserRole } from './types/settings';
 
 const DEFAULT_SPECIALISTS: Specialist[] = [

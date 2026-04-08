@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Shield, Lock, X, Eye, EyeOff, AlertCircle } from 'lucide-react';
+import { Shield, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 interface PasswordModalProps {
   isOpen: boolean;

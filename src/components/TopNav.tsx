@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { Search as SearchIcon, Bell, Menu, FileDown, Database, Clock, ChevronRight, AlertCircle, Shield, User, ChevronDown, Check, Briefcase, Building2, Layout, Inbox, X } from 'lucide-react';
+import { useState, useRef, useEffect, type ChangeEvent } from 'react';
+import { Search as SearchIcon, Bell, Menu, FileDown, Database, Clock, ChevronRight, Shield, User, ChevronDown, Check, Briefcase, Building2, Layout, Inbox, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '../utils/excel';
 import type { UserRole, Specialist, Client } from '../types/settings';
@@ -46,7 +46,7 @@ export const TopNav = ({ onSearch, searchTerm, onExport, onImport, projects, tas
   const profileRef = useRef<HTMLDivElement>(null);
   const searchRef = useRef<HTMLDivElement>(null);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       onImport(e.target.files[0]);
     }
