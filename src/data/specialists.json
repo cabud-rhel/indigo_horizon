@@ -5,5 +5,12 @@
     "role": "Arquitecto de Soluciones",
     "initials": "CA",
     "active": true
+  },
+  {
+    "id": "sxeyznntu",
+    "name": "Rodrigo Piritaguari",
+    "role": "Especialista de Producto",
+    "initials": "RP",
+    "active": true
   }
 ]
