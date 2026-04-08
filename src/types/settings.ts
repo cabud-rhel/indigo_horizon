@@ -21,6 +21,10 @@ export interface SystemConfig {
   predictiveAlerts: boolean;
   theme: 'light' | 'dark' | 'system';
   lastBackup?: string;
+  githubToken?: string;
+  githubOwner?: string;
+  githubRepo?: string;
+  autoSync?: boolean;
 }
 
 export interface AppBackup {

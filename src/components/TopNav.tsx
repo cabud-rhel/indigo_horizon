@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, type ChangeEvent } from 'react';
-import { Search as SearchIcon, Bell, Menu, FileDown, Database, Clock, ChevronRight, Shield, User, ChevronDown, Check, Briefcase, Building2, Layout, Inbox, X } from 'lucide-react';
+import { Search as SearchIcon, Bell, Menu, FileDown, Database, Clock, ChevronRight, Shield, User, ChevronDown, Check, Briefcase, Building2, Layout, Inbox, X, RefreshCw, Cloud } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '../utils/excel';
 import type { UserRole, Specialist, Client } from '../types/settings';
@@ -27,11 +27,15 @@ interface TopNavProps {
   onSelectResult: (result: { id: string, type: string, projectId?: string }) => void;
   userRole: UserRole;
   onRoleChange: (role: UserRole) => void;
+  syncStatus?: 'idle' | 'syncing' | 'error' | 'success';
 }
 
 const MASTER_PASSWORD = 'admin2026';
 
-export const TopNav = ({ onSearch, searchTerm, onExport, onImport, projects, tasks, specialists, clients, onNotificationClick, onSelectResult, userRole, onRoleChange }: TopNavProps) => {
+export const TopNav = ({ 
+    onSearch, searchTerm, onExport, onImport, projects, tasks, specialists, clients, 
+    onNotificationClick, onSelectResult, userRole, onRoleChange, syncStatus = 'idle' 
+}: TopNavProps) => {
   const [isNotificationsOpen, setIsNotificationsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
@@ -218,6 +222,22 @@ export const TopNav = ({ onSearch, searchTerm, onExport, onImport, projects, tas
               <FileDown className="text-primary/60 group-hover:text-primary transition-colors" size={20} />
             </button>
           </div>
+        )}
+
+        {/* Sync Status */}
+        {isArchitect && (
+            <div 
+                title={syncStatus === 'syncing' ? 'Sincronizando con GitHub...' : syncStatus === 'error' ? 'Error de sincronización' : syncStatus === 'success' ? 'Sincronizado' : 'Nube lista'}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all ${
+                    syncStatus === 'syncing' ? 'bg-secondary/10 border-secondary/20 text-secondary' :
+                    syncStatus === 'error' ? 'bg-error/10 border-error/20 text-error' :
+                    syncStatus === 'success' ? 'bg-secondary-container border-secondary/20 text-on-secondary-container' :
+                    'bg-surface-container-high border-outline-variant/10 text-outline'
+                }`}
+            >
+                {syncStatus === 'syncing' ? <RefreshCw size={14} className="animate-spin" /> : <Cloud size={14} />}
+                <span className="text-[9px] font-black uppercase tracking-widest hidden lg:inline">Cloud</span>
+            </div>
         )}
 
         <div className="relative" ref={dropdownRef}>

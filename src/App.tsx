@@ -20,6 +20,7 @@ import slaTasksData from './data/slaTasks.json';
 import initialTasksData from './data/tasks.json';
 import { Plus } from 'lucide-react';
 import type { Specialist, Client, SystemConfig, AppBackup, UserRole } from './types/settings';
+import { commitMultipleFiles } from './utils/githubSync';
 
 const DEFAULT_SPECIALISTS: Specialist[] = [
   { id: '1', name: 'Elena P.', role: 'Senior Architect', initials: 'EP', active: true },
@@ -58,6 +59,7 @@ function App() {
   const [editingTask, setEditingTask] = useState<Task | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [syncStatus, setSyncStatus] = useState<'idle' | 'syncing' | 'error' | 'success'>('idle');
 
   const isArchitect = userRole === 'Architect';
 
@@ -91,6 +93,37 @@ function App() {
       localStorage.setItem('indigo_horizon_config', JSON.stringify(config));
     }
   }, [projects, tasks, specialists, clients, config, userRole, hasLoaded]);
+
+  // Automatic Cloud Sync
+  useEffect(() => {
+    if (!hasLoaded || !config.autoSync || !config.githubToken || !config.githubOwner || !config.githubRepo) return;
+
+    const timeoutId = setTimeout(async () => {
+      setSyncStatus('syncing');
+      
+      const files = [
+        { path: 'src/data/initialProjects.json', content: JSON.stringify(projects, null, 2) },
+        { path: 'src/data/tasks.json', content: JSON.stringify(tasks, null, 2) },
+        { path: 'src/data/specialists.json', content: JSON.stringify(specialists, null, 2) },
+        { path: 'src/data/clients.json', content: JSON.stringify(clients, null, 2) },
+      ];
+
+      const result = await commitMultipleFiles({
+        token: config.githubToken!,
+        owner: config.githubOwner!,
+        repo: config.githubRepo!,
+      }, files);
+
+      if (result.success) {
+        setSyncStatus('success');
+        setTimeout(() => setSyncStatus('idle'), 3000);
+      } else {
+        setSyncStatus('error');
+      }
+    }, 5000); // 5 second debounce
+
+    return () => clearTimeout(timeoutId);
+  }, [hasLoaded, projects, tasks, specialists, clients, config.autoSync, config.githubToken, config.githubOwner, config.githubRepo]);
 
   const handleAddProject = (newProject: Project) => {
     if (!isArchitect) return;
@@ -197,6 +230,7 @@ function App() {
           onSelectResult={handleSelectSearchResult}
           userRole={userRole}
           onRoleChange={setUserRole}
+          syncStatus={syncStatus}
         />
         
         <div className="flex-1 overflow-y-auto p-4 md:p-8 space-y-8 scroll-smooth custom-scrollbar">

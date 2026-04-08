@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Users, Building2, Settings2, Plus, Trash2, Download, Upload, Check, AlertCircle, Save, X, Pencil, User, Briefcase, Factory, Shield } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Users, Building2, Settings2, Plus, Trash2, Download, Upload, Check, AlertCircle, Save, X, Pencil, User, Briefcase, Factory, Shield, Database, Cloud } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Specialist, Client, SystemConfig, AppBackup, UserRole } from '../types/settings';
 import type { Project } from '../utils/excel';
@@ -224,28 +224,85 @@ export const SettingsView = ({
 
           {activeTab === 'system' && (
             <motion.div key="sys" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="space-y-12">
-              <div className={`bg-primary/5 rounded-[40px] p-10 border border-primary/20 space-y-8 ${!isArchitect ? 'opacity-60 cursor-not-allowed' : ''}`}>
-                <div className="flex items-start gap-5">
-                    <div className="p-4 bg-primary/10 rounded-2xl text-primary"><Download size={32} /></div>
-                    <div>
-                        <h4 className="text-xl font-headline font-extrabold text-primary">Seguridad y Respaldo</h4>
-                        <p className="text-sm text-outline font-medium mt-1">Exporta toda la configuración, proyectos y tareas a un archivo local para respaldo o transferencia entre dispositivos.</p>
-                    </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Local Backup */}
+                <div className={`bg-primary/5 rounded-[40px] p-10 border border-primary/20 space-y-8 ${!isArchitect ? 'opacity-60 cursor-not-allowed' : ''}`}>
+                  <div className="flex items-start gap-5">
+                      <div className="p-4 bg-primary/10 rounded-2xl text-primary"><Download size={32} /></div>
+                      <div>
+                          <h4 className="text-xl font-headline font-extrabold text-primary">Seguridad y Respaldo</h4>
+                          <p className="text-sm text-outline font-medium mt-1">Exporta toda la configuración a un archivo local.</p>
+                      </div>
+                  </div>
+                  <div className="flex gap-4">
+                      <button onClick={handleExport}
+                          className="flex-1 py-4 bg-primary text-white rounded-2xl text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-xl shadow-primary/20"
+                      >
+                          <Save size={18} /> Exportar
+                      </button>
+                      {isArchitect && (
+                        <label className="flex-1 cursor-pointer">
+                            <div className="w-full h-full py-4 bg-surface rounded-2xl text-primary border-2 border-dashed border-primary/30 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-primary/5 transition-all">
+                                <Upload size={18} /> Importar
+                            </div>
+                            <input type="file" className="hidden" accept=".json" onChange={handleImport} />
+                        </label>
+                      )}
+                  </div>
                 </div>
-                <div className="flex gap-4">
-                    <button onClick={handleExport}
-                        className="flex-1 py-4 bg-primary text-white rounded-2xl text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-xl shadow-primary/20"
-                    >
-                        <Save size={18} /> Exportar Backup (JSON)
-                    </button>
-                    {isArchitect && (
-                      <label className="flex-1 cursor-pointer">
-                          <div className="w-full h-full py-4 bg-surface rounded-2xl text-primary border-2 border-dashed border-primary/30 text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-primary/5 transition-all">
-                              <Upload size={18} /> Importar Backup
-                          </div>
-                          <input type="file" className="hidden" accept=".json" onChange={handleImport} />
-                      </label>
-                    )}
+
+                {/* Cloud Sync */}
+                <div className={`bg-secondary/5 rounded-[40px] p-10 border border-secondary/20 space-y-6 ${!isArchitect ? 'opacity-60 cursor-not-allowed' : ''}`}>
+                  <div className="flex items-start gap-5">
+                      <div className="p-4 bg-secondary/10 rounded-2xl text-secondary"><Database size={32} /></div>
+                      <div>
+                          <h4 className="text-xl font-headline font-extrabold text-secondary">Sincronización Cloud</h4>
+                          <p className="text-sm text-outline font-medium mt-1">Conecta con tu repositorio de GitHub para persistencia automática.</p>
+                      </div>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      <InputGroup 
+                        label="Usuario GitHub" 
+                        value={config.githubOwner || ''} 
+                        onChange={v => onUpdateConfig({ ...config, githubOwner: v })} 
+                        placeholder="e.g. cabud-rhel" 
+                      />
+                      <InputGroup 
+                        label="Repositorio" 
+                        value={config.githubRepo || ''} 
+                        onChange={v => onUpdateConfig({ ...config, githubRepo: v })} 
+                        placeholder="indigo_horizon" 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-outline uppercase tracking-widest ml-1">Personal Access Token (PAT)</label>
+                      <div className="flex items-center gap-3 bg-white/50 p-4 rounded-2xl border border-secondary/10">
+                        <Database size={18} className="text-secondary" />
+                        <input 
+                          type="password"
+                          className="bg-transparent border-none focus:ring-0 text-sm font-bold w-full placeholder:text-outline/30 text-on-surface"
+                          placeholder="github_pat_..."
+                          value={config.githubToken || ''}
+                          onChange={e => onUpdateConfig({ ...config, githubToken: e.target.value })}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-4 bg-secondary/5 rounded-2xl">
+                      <div className="flex items-center gap-3">
+                        <Cloud size={20} className="text-secondary" />
+                        <span className="text-xs font-bold text-primary italic">Autosync Inteligente</span>
+                      </div>
+                      <button 
+                        disabled={!isArchitect}
+                        onClick={() => onUpdateConfig({ ...config, autoSync: !config.autoSync })}
+                        className={`w-12 h-6 rounded-full transition-all relative ${config.autoSync ? 'bg-secondary' : 'bg-outline-variant'}`}
+                      >
+                        <motion.div animate={{ x: config.autoSync ? 24 : 4 }} className="absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm" />
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -264,7 +321,7 @@ export const SettingsView = ({
                             <motion.div animate={{ x: config.predictiveAlerts ? 28 : 4 }} className="absolute top-1 w-6 h-6 bg-white rounded-full shadow-md" />
                         </button>
                     </div>
-                    <p className="text-xs text-outline leading-relaxed">Habilita el cálculo algorítmico del riesgo de SLA (At Risk / Overdue) basado en las fechas de entrega y creación.</p>
+                    <p className="text-xs text-outline leading-relaxed">Habilita el cálculo algorítmico del riesgo de SLA basado en las fechas.</p>
                 </div>
                 
                 <div className="bg-surface-container-low p-8 rounded-[40px] border border-outline-variant/10 space-y-6">
@@ -309,7 +366,7 @@ export const SettingsView = ({
 const SpecialistModal = ({ isOpen, onClose, onSave, data }: { isOpen: boolean, onClose: () => void, onSave: (s: { name: string, role: string, initials: string }) => void, data: Specialist | null }) => {
   const [formData, setFormData] = useState({ name: '', role: '', initials: '' });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       setFormData(data ? { name: data.name, role: data.role, initials: data.initials } : { name: '', role: 'Consultant', initials: '' });
     }
@@ -344,7 +401,7 @@ const SpecialistModal = ({ isOpen, onClose, onSave, data }: { isOpen: boolean, o
 const ClientModal = ({ isOpen, onClose, onSave, data }: { isOpen: boolean, onClose: () => void, onSave: (c: { name: string, industry: string }) => void, data: Client | null }) => {
   const [formData, setFormData] = useState({ name: '', industry: '' });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       setFormData(data ? { name: data.name, industry: data.industry } : { name: '', industry: '' });
     }
@@ -366,7 +423,7 @@ const ClientModal = ({ isOpen, onClose, onSave, data }: { isOpen: boolean, onClo
 };
 
 // ── Shared UI Components ───────────────────────────────────────────────
-const ManagementModal = ({ isOpen, onClose, title, children }: { isOpen: boolean, onClose: () => void, title: string, children: React.ReactNode }) => (
+const ManagementModal = ({ isOpen, onClose, title, children }: { isOpen: boolean, onClose: () => void, title: string, children: any }) => (
   <AnimatePresence>
     {isOpen && (
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
@@ -401,7 +458,7 @@ const InputGroup = ({ label, icon, value, onChange, placeholder }: { label: stri
   </div>
 );
 
-const TabBtn = ({ active, onClick, icon, label }: { active: boolean; onClick: () => void; icon: React.ReactNode; label: string }) => (
+const TabBtn = ({ active, onClick, icon, label }: { active: boolean; onClick: () => void; icon: any; label: string }) => (
   <button onClick={onClick}
     className={`px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest flex items-center gap-2 transition-all ${
       active ? 'bg-surface text-primary shadow-sm shadow-black/5' : 'text-outline hover:text-primary hover:bg-surface/50'
