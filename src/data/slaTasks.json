@@ -1,0 +1,38 @@
+[
+  {
+    "id": "sla-1",
+    "project": "Starlight Financial Complex",
+    "specialist": "Elena P.",
+    "task": "Sizing & Quoting",
+    "slaHours": 24,
+    "startTime": "2026-03-31T20:00:00Z",
+    "status": "In Progress"
+  },
+  {
+    "id": "sla-2",
+    "project": "Neo-Vantage Office Hub",
+    "specialist": "Mark V.",
+    "task": "Structural Review",
+    "slaHours": 48,
+    "startTime": "2026-03-31T14:00:00Z",
+    "status": "At Risk"
+  },
+  {
+    "id": "sla-3",
+    "project": "The Serenity Residences",
+    "specialist": "Sophia L.",
+    "task": "HVAC Sizing",
+    "slaHours": 4,
+    "startTime": "2026-03-31T21:30:00Z",
+    "status": "Overdue"
+  },
+  {
+    "id": "sla-4",
+    "project": "Starlight Financial Complex",
+    "specialist": "Elena P.",
+    "task": "Electrical Layout",
+    "slaHours": 72,
+    "startTime": "2026-03-31T10:00:00Z",
+    "status": "Completed"
+  }
+]

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-on-surface font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-xl bg-surface/80;
+  }
+  
+  .primary-gradient {
+    @apply bg-gradient-to-br from-primary to-primary-container;
+  }
+}
+
+/* Custom rules from DESIGN.md */
+:root {
+  --radius-xl: 0.75rem;
+}
+
+/* No-Line Rule: boundaries must be defined through background shifts */
+.surface-hierarchy-1 { @apply bg-surface; }
+.surface-hierarchy-2 { @apply bg-surface-container-low; }
+.surface-hierarchy-3 { @apply bg-surface-container-lowest; }
+
+/* Metric Overlap effect */
+.metric-overlap {
+  @apply relative;
+}
+.metric-overlap > *:first-child {
+  @apply absolute -top-4 -left-4 opacity-5 pointer-events-none;
+}
