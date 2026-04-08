@@ -5,40 +5,5 @@
     "role": "Arquitecto de Soluciones",
     "initials": "CA",
     "active": true
-  },
-  {
-    "id": "58yih3dkt",
-    "name": "Yasuhiko Roca",
-    "role": "Especialista de Producto",
-    "initials": "YR",
-    "active": true
-  },
-  {
-    "id": "vz01fvmro",
-    "name": "Alfredo Ordoñez",
-    "role": "Especialista de Producto",
-    "initials": "AO",
-    "active": true
-  },
-  {
-    "id": "8qgs5wxej",
-    "name": "Mario Mejia",
-    "role": "Especialista de Producto",
-    "initials": "MM",
-    "active": true
-  },
-  {
-    "id": "knxshq352",
-    "name": "Rodrigo Piritaguari",
-    "role": "Especialista de Producto",
-    "initials": "RP",
-    "active": true
-  },
-  {
-    "id": "nuxk7ths9",
-    "name": "Monica Torrico",
-    "role": "Especialista de Producto",
-    "initials": "MT",
-    "active": true
   }
 ]

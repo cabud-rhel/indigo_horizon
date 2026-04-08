@@ -1,8 +1,32 @@
 [
   {
-    "id": "vamolfx0o",
-    "name": "Banco Alfin (Peru)",
-    "industry": "Finanzas",
+    "id": "c1",
+    "name": "Starlight Financial",
+    "industry": "Finance",
+    "active": true
+  },
+  {
+    "id": "c2",
+    "name": "Neo-Vantage",
+    "industry": "Logistics",
+    "active": true
+  },
+  {
+    "id": "c3",
+    "name": "The Serenity Residences",
+    "industry": "Real Estate",
+    "active": true
+  },
+  {
+    "id": "c4",
+    "name": "Gourmet Global",
+    "industry": "Hospitality",
+    "active": true
+  },
+  {
+    "id": "c5",
+    "name": "TechNova Solutions",
+    "industry": "Technology",
     "active": true
   }
 ]
