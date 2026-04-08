@@ -26,5 +26,12 @@
     "role": "Especialista de Producto",
     "initials": "MM",
     "active": true
+  },
+  {
+    "id": "knxshq352",
+    "name": "Rodrigo Piritaguari",
+    "role": "Especialista de Producto",
+    "initials": "RP",
+    "active": true
   }
 ]
