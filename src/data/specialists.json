@@ -33,5 +33,12 @@
     "role": "Especialista de Producto",
     "initials": "RP",
     "active": true
+  },
+  {
+    "id": "nuxk7ths9",
+    "name": "Monica Torrico",
+    "role": "Especialista de Producto",
+    "initials": "MT",
+    "active": true
   }
 ]
