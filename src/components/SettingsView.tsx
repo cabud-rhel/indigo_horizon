@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Users, Building2, Settings2, Plus, Trash2, Download, Upload, Check, AlertCircle, Save, X, Pencil, User, Briefcase, Factory, Shield, Database, Cloud } from 'lucide-react';
+import { Users, Building2, Settings2, Plus, Trash2, Download, Upload, Check, AlertCircle, Save, X, Pencil, User, Briefcase, Factory, Shield, Database, Cloud, RefreshCw } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Specialist, Client, SystemConfig, AppBackup, UserRole } from '../types/settings';
 import type { Project } from '../utils/excel';
@@ -16,6 +16,7 @@ interface SettingsViewProps {
   onUpdateClients: (c: Client[]) => void;
   onUpdateConfig: (conf: SystemConfig) => void;
   onRestore: (backup: Partial<AppBackup>) => void;
+  syncStatus: 'idle' | 'syncing' | 'error' | 'success';
 }
 
 export const SettingsView = ({
@@ -28,7 +29,8 @@ export const SettingsView = ({
   onUpdateSpecialists,
   onUpdateClients,
   onUpdateConfig,
-  onRestore
+  onRestore,
+  syncStatus
 }: SettingsViewProps) => {
   const [activeTab, setActiveTab] = useState<'specialists' | 'clients' | 'system'>('specialists');
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
@@ -253,11 +255,21 @@ export const SettingsView = ({
 
                 {/* Cloud Sync */}
                 <div className={`bg-secondary/5 rounded-[40px] p-10 border border-secondary/20 space-y-6 ${!isArchitect ? 'opacity-60 cursor-not-allowed' : ''}`}>
-                  <div className="flex items-start gap-5">
-                      <div className="p-4 bg-secondary/10 rounded-2xl text-secondary"><Database size={32} /></div>
-                      <div>
-                          <h4 className="text-xl font-headline font-extrabold text-secondary">Sincronización Cloud</h4>
-                          <p className="text-sm text-outline font-medium mt-1">Conecta con tu repositorio de GitHub para persistencia automática.</p>
+                  <div className="flex items-start justify-between gap-5">
+                      <div className="flex items-start gap-5">
+                        <div className="p-4 bg-secondary/10 rounded-2xl text-secondary"><Database size={32} /></div>
+                        <div>
+                            <h4 className="text-xl font-headline font-extrabold text-secondary">Sincronización Cloud</h4>
+                            <p className="text-sm text-outline font-medium mt-1">Conecta con tu repositorio de GitHub para persistencia automática.</p>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <div className={`px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                          syncStatus === 'success' ? 'bg-secondary/20 text-secondary' : 
+                          syncStatus === 'error' ? 'bg-error/20 text-error' : 'bg-outline-variant/20 text-outline'
+                        }`}>
+                          {syncStatus === 'success' ? 'Conectado' : syncStatus === 'error' ? 'Error' : 'Offline'}
+                        </div>
                       </div>
                   </div>
                   
@@ -277,7 +289,10 @@ export const SettingsView = ({
                       />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-[10px] font-bold text-outline uppercase tracking-widest ml-1">Personal Access Token (PAT)</label>
+                      <div className="flex justify-between items-end ml-1">
+                        <label className="text-[10px] font-bold text-outline uppercase tracking-widest">Personal Access Token (PAT)</label>
+                        <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noreferrer" className="text-[9px] font-bold text-secondary hover:underline">Generar uno nuevo</a>
+                      </div>
                       <div className="flex items-center gap-3 bg-white/50 p-4 rounded-2xl border border-secondary/10">
                         <Database size={18} className="text-secondary" />
                         <input 
@@ -289,6 +304,19 @@ export const SettingsView = ({
                         />
                       </div>
                     </div>
+
+                    <div className="flex gap-3">
+                      <button 
+                         onClick={() => {
+                           // Trigger a reload of the app or a manual save to test
+                           window.location.reload();
+                         }}
+                         className="flex-1 py-3 bg-secondary/10 text-secondary rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-secondary/20 transition-all flex items-center justify-center gap-2"
+                      >
+                         <RefreshCw size={14} /> Probar y Recargar
+                      </button>
+                    </div>
+
                     <div className="flex items-center justify-between p-4 bg-secondary/5 rounded-2xl">
                       <div className="flex items-center gap-3">
                         <Cloud size={20} className="text-secondary" />
@@ -302,6 +330,16 @@ export const SettingsView = ({
                         <motion.div animate={{ x: config.autoSync ? 24 : 4 }} className="absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm" />
                       </button>
                     </div>
+
+                    {syncStatus === 'error' && (
+                      <div className="p-4 bg-error/5 border border-error/20 rounded-2xl flex items-start gap-3">
+                        <AlertCircle size={16} className="text-error shrink-0 mt-0.5" />
+                        <div className="space-y-1">
+                          <p className="text-[11px] font-bold text-error leading-tight">Error de Sincronización</p>
+                          <p className="text-[10px] text-error/70 leading-tight">Verifica que el Token sea válido y tenga permisos de 'Contents: Read & Write' para este repositorio privado.</p>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

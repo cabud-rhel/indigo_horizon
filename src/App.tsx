@@ -20,7 +20,7 @@ import slaTasksData from './data/slaTasks.json';
 import initialTasksData from './data/tasks.json';
 import { Plus } from 'lucide-react';
 import type { Specialist, Client, SystemConfig, AppBackup, UserRole } from './types/settings';
-import { commitMultipleFiles } from './utils/githubSync';
+import { commitMultipleFiles, fetchMultipleFiles } from './utils/githubSync';
 
 const DEFAULT_SPECIALISTS: Specialist[] = [
   { id: '1', name: 'Elena P.', role: 'Senior Architect', initials: 'EP', active: true },
@@ -78,7 +78,42 @@ function App() {
     setClients(savedClients ? JSON.parse(savedClients) : DEFAULT_CLIENTS);
 
     const savedConfig = localStorage.getItem('indigo_horizon_config');
-    if (savedConfig) setConfig(JSON.parse(savedConfig));
+    if (savedConfig) {
+      const parsedConfig = JSON.parse(savedConfig);
+      setConfig(parsedConfig);
+      
+      // If we have GitHub config, try to pull latest data from cloud
+      if (parsedConfig.githubToken && parsedConfig.githubOwner && parsedConfig.githubRepo) {
+        setSyncStatus('syncing');
+        fetchMultipleFiles({
+          token: parsedConfig.githubToken,
+          owner: parsedConfig.githubOwner,
+          repo: parsedConfig.githubRepo
+        }, [
+          'src/data/initialProjects.json',
+          'src/data/tasks.json',
+          'src/data/specialists.json',
+          'src/data/clients.json'
+        ]).then(result => {
+          if (result.success && result.files) {
+            result.files.forEach(file => {
+              if (!file.content) return;
+              const data = JSON.parse(file.content);
+              if (file.path.endsWith('initialProjects.json')) setProjects(data);
+              else if (file.path.endsWith('tasks.json')) setTasks(data);
+              else if (file.path.endsWith('specialists.json')) setSpecialists(data);
+              else if (file.path.endsWith('clients.json')) setClients(data);
+            });
+            setSyncStatus('success');
+            setTimeout(() => setSyncStatus('idle'), 3000);
+          } else {
+            setSyncStatus('error');
+          }
+          setHasLoaded(true);
+        });
+        return; // setHasLoaded will be called in the .then
+      }
+    }
 
     setHasLoaded(true);
   }, []);
@@ -285,6 +320,7 @@ function App() {
               onUpdateClients={setClients}
               onUpdateConfig={setConfig}
               onRestore={handleRestore}
+              syncStatus={syncStatus}
             />
           ) : (
             <div className="flex flex-col items-center justify-center p-20 bg-surface-container-low rounded-3xl border-2 border-dashed border-outline-variant/20 italic text-outline">

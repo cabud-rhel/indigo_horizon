@@ -93,3 +93,31 @@ export async function commitMultipleFiles(config: GitHubConfig, files: SyncFile[
     return { success: false, error: (error as Error).message };
   }
 }
+
+export async function fetchMultipleFiles(config: GitHubConfig, paths: string[]) {
+  const { token, owner, repo, branch = 'main' } = config;
+  const headers = {
+    'Authorization': `token ${token}`,
+    'Accept': 'application/vnd.github.v3.raw', // Get raw content directly
+  };
+
+  try {
+    const results = await Promise.all(paths.map(async (path) => {
+      // We append a timestamp to avoid browser caching of the raw files
+      const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}&t=${Date.now()}`, { headers });
+      
+      if (!response.ok) {
+        if (response.status === 404) return { path, content: null }; // File doesn't exist yet
+        throw new Error(`Failed to fetch ${path}: ${response.statusText}`);
+      }
+      
+      const content = await response.text();
+      return { path, content };
+    }));
+
+    return { success: true, files: results };
+  } catch (error) {
+    console.error('GitHub Fetch Error:', error);
+    return { success: false, error: (error as Error).message };
+  }
+}
