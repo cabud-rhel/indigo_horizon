@@ -1,0 +1,23 @@
+[
+  {
+    "id": "4",
+    "name": "Carlos Abud",
+    "role": "Arquitecto de Soluciones",
+    "initials": "CA",
+    "active": true
+  },
+  {
+    "id": "58yih3dkt",
+    "name": "Yasuhiko Roca",
+    "role": "Especialista de Producto",
+    "initials": "YR",
+    "active": true
+  },
+  {
+    "id": "vz01fvmro",
+    "name": "Alfredo Ordoñez",
+    "role": "Especialista de Producto",
+    "initials": "AO",
+    "active": true
+  }
+]
