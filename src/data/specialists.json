@@ -19,5 +19,12 @@
     "role": "Especialista de Producto",
     "initials": "AO",
     "active": true
+  },
+  {
+    "id": "8qgs5wxej",
+    "name": "Mario Mejia",
+    "role": "Especialista de Producto",
+    "initials": "MM",
+    "active": true
   }
 ]
