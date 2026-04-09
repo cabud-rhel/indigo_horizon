@@ -12,5 +12,12 @@
     "role": "Especialista de Producto",
     "initials": "RP",
     "active": true
+  },
+  {
+    "id": "dps1s1nh0",
+    "name": "David Valverde",
+    "role": "Ventas",
+    "initials": "DV",
+    "active": true
   }
 ]
