@@ -33,5 +33,12 @@
     "role": "Especialista de Producto",
     "initials": "AO",
     "active": true
+  },
+  {
+    "id": "ngm34vgsw",
+    "name": "Rafael Crovo",
+    "role": "Ventas",
+    "initials": "RC",
+    "active": true
   }
 ]
