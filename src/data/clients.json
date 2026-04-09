@@ -10,5 +10,11 @@
     "name": "Banco Ripley (Peru)",
     "industry": "Financiera",
     "active": true
+  },
+  {
+    "id": "i1aq5hvkh",
+    "name": "Banco Sol",
+    "industry": "Financiera",
+    "active": true
   }
 ]
