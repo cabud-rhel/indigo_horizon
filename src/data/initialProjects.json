@@ -4,7 +4,7 @@
     "client": "Banco Sol",
     "solutionsArchitect": "Carlos Abud",
     "projectLeader": "Yasuhiko Roca",
-    "salesperson": "David Valverde",
+    "salesperson": "Rafael Crovo",
     "progress": 0,
     "status": "On Track",
     "stage": "Architecture",
@@ -14,7 +14,9 @@
     "id": "yl0z6w5kz",
     "initials": "CA",
     "createdAt": "2026-04-09T15:22:15.103Z",
-    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop",
+    "referentialNotes": "",
+    "referentialImages": []
   },
   {
     "title": "Sitio de contingencia para el Banco Ripley",
