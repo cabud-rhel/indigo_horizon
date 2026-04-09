@@ -4,5 +4,11 @@
     "name": "Banco ALFIN (PERU)",
     "industry": "Financiera",
     "active": true
+  },
+  {
+    "id": "601df6siu",
+    "name": "Banco Ripley (Peru)",
+    "industry": "Financiera",
+    "active": true
   }
 ]
