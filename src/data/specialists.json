@@ -19,5 +19,12 @@
     "role": "Ventas",
     "initials": "DV",
     "active": true
+  },
+  {
+    "id": "r5nmbwubi",
+    "name": "Yasuhiko Roca",
+    "role": "Especialista de Producto",
+    "initials": "YR",
+    "active": true
   }
 ]
