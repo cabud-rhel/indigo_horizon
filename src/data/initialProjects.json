@@ -1,5 +1,22 @@
 [
   {
+    "title": "Assessment de Infraestructura",
+    "client": "Banco Ripley (Peru)",
+    "solutionsArchitect": "Carlos Abud",
+    "projectLeader": "Carlos Abud",
+    "salesperson": "David Valverde",
+    "progress": 0,
+    "status": "On Track",
+    "stage": "Architecture",
+    "lifecycleStatus": "En proceso",
+    "startDate": "2026-04-09",
+    "deliveryDate": "2026-05-11",
+    "id": "i3o3luve9",
+    "initials": "CA",
+    "createdAt": "2026-04-09T14:39:05.500Z",
+    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop"
+  },
+  {
     "title": "Migracion Bantotal de la Nube a on-premise",
     "client": "Banco Alfin (Peru)",
     "solutionsArchitect": "Carlos Abud",
