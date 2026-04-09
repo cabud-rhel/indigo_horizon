@@ -40,5 +40,12 @@
     "role": "Ventas",
     "initials": "RC",
     "active": true
+  },
+  {
+    "id": "baetrksf3",
+    "name": "Borys Espada",
+    "role": "Especialista de Producto",
+    "initials": "BE",
+    "active": true
   }
 ]
