@@ -1,5 +1,22 @@
 [
   {
+    "title": "Cluster de Microservicios (Nutanix)",
+    "client": "Banco Sol",
+    "solutionsArchitect": "Carlos Abud",
+    "projectLeader": "Yasuhiko Roca",
+    "salesperson": "David Valverde",
+    "progress": 0,
+    "status": "On Track",
+    "stage": "Architecture",
+    "lifecycleStatus": "Por iniciar",
+    "startDate": "2026-04-09",
+    "deliveryDate": "2026-05-09",
+    "id": "yl0z6w5kz",
+    "initials": "CA",
+    "createdAt": "2026-04-09T15:22:15.103Z",
+    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop"
+  },
+  {
     "title": "Sitio de contingencia para el Banco Ripley",
     "client": "Banco Ripley (Peru)",
     "solutionsArchitect": "Carlos Abud",
