@@ -26,5 +26,12 @@
     "role": "Especialista de Producto",
     "initials": "YR",
     "active": true
+  },
+  {
+    "id": "1dwm8gurd",
+    "name": "Alfredo Ordoñez",
+    "role": "Especialista de Producto",
+    "initials": "AO",
+    "active": true
   }
 ]
