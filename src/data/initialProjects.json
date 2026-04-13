@@ -24,16 +24,18 @@
     "solutionsArchitect": "Carlos Abud",
     "projectLeader": "Carlos Abud",
     "salesperson": "David Valverde",
-    "progress": 0,
+    "progress": 45,
     "status": "On Track",
     "stage": "Architecture",
-    "lifecycleStatus": "Iniciado",
+    "lifecycleStatus": "En proceso",
     "startDate": "2026-04-09",
     "deliveryDate": "2026-05-09",
     "id": "biz66qiz5",
     "initials": "CA",
     "createdAt": "2026-04-09T14:39:58.239Z",
-    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop",
+    "referentialNotes": "",
+    "referentialImages": []
   },
   {
     "title": "Assessment de Infraestructura",
