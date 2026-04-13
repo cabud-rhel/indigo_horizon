@@ -47,5 +47,12 @@
     "role": "Especialista de Producto",
     "initials": "BE",
     "active": true
+  },
+  {
+    "id": "ppd27tm76",
+    "name": "Ruddy Soto",
+    "role": "Especialista de Producto",
+    "initials": "RS",
+    "active": true
   }
 ]
