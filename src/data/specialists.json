@@ -54,5 +54,12 @@
     "role": "Especialista de Producto",
     "initials": "RS",
     "active": true
+  },
+  {
+    "id": "5oyo66gxa",
+    "name": "Carlos Laura",
+    "role": "Servicios",
+    "initials": "CL",
+    "active": true
   }
 ]
