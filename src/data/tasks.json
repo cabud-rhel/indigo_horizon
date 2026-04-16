@@ -19,7 +19,8 @@
     "dueDate": "2026-04-14T16:00:00.000Z",
     "createdAt": "2026-04-13T21:19:25.200Z",
     "priority": "High",
-    "status": "Pending"
+    "status": "Completed",
+    "completedAt": "2026-04-16T21:32:21.264Z"
   },
   {
     "id": "t-1776115126780",
