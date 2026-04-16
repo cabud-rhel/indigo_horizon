@@ -16,5 +16,11 @@
     "name": "Banco Sol",
     "industry": "Financiera",
     "active": true
+  },
+  {
+    "id": "m5qljdx3c",
+    "name": "Viceministerio de Turismo",
+    "industry": "Gobierno",
+    "active": true
   }
 ]
