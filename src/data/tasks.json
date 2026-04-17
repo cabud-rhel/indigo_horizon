@@ -1,5 +1,16 @@
 [
   {
+    "id": "t-1776384736055",
+    "projectId": "f5fm0z0l2",
+    "projectName": "ObservaTur (Observatorio Turístico de Inteligencia de Mercados)",
+    "specialist": "Mario Mejia",
+    "description": "Software y Licenciamiento Sangfor",
+    "dueDate": "2026-04-20T16:00:00.000Z",
+    "createdAt": "2026-04-17T00:12:16.055Z",
+    "priority": "Standard",
+    "status": "Pending"
+  },
+  {
     "id": "t-1776384696522",
     "projectId": "f5fm0z0l2",
     "projectName": "ObservaTur (Observatorio Turístico de Inteligencia de Mercados)",
