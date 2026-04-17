@@ -75,5 +75,12 @@
     "role": "Especialista de Producto",
     "initials": "MM",
     "active": true
+  },
+  {
+    "id": "izyrk7xw7",
+    "name": "Carlos Pinto",
+    "role": "Ventas",
+    "initials": "CP",
+    "active": true
   }
 ]
