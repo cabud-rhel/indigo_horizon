@@ -28,5 +28,11 @@
     "name": "Banco Economico",
     "industry": "Financiera",
     "active": true
+  },
+  {
+    "id": "lpyj0apk6",
+    "name": "Banco Mercantil Santa Cruz",
+    "industry": "Financiera",
+    "active": true
   }
 ]
