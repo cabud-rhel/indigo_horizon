@@ -4,8 +4,8 @@
     "client": "Viceministerio de Turismo",
     "solutionsArchitect": "Carlos Abud",
     "projectLeader": "Carlos Abud",
-    "salesperson": "David Valverde",
-    "progress": 0,
+    "salesperson": "Alejandra Peñaranda",
+    "progress": 15,
     "status": "On Track",
     "stage": "Architecture",
     "lifecycleStatus": "Iniciado",
@@ -14,7 +14,9 @@
     "id": "f5fm0z0l2",
     "initials": "CA",
     "createdAt": "2026-04-17T00:08:33.368Z",
-    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop"
+    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop",
+    "referentialNotes": "",
+    "referentialImages": []
   },
   {
     "title": "Cluster de Microservicios (Nutanix)",
