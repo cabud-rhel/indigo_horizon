@@ -1,5 +1,22 @@
 [
   {
+    "title": "ObservaTur (Observatorio Turístico de Inteligencia de Mercados)",
+    "client": "Viceministerio de Turismo",
+    "solutionsArchitect": "Carlos Abud",
+    "projectLeader": "Carlos Abud",
+    "salesperson": "David Valverde",
+    "progress": 0,
+    "status": "On Track",
+    "stage": "Architecture",
+    "lifecycleStatus": "Iniciado",
+    "startDate": "2026-04-16",
+    "deliveryDate": "2026-05-16",
+    "id": "f5fm0z0l2",
+    "initials": "CA",
+    "createdAt": "2026-04-17T00:08:33.368Z",
+    "img": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=200&h=200&auto=format&fit=crop"
+  },
+  {
     "title": "Cluster de Microservicios (Nutanix)",
     "client": "Banco Sol",
     "solutionsArchitect": "Carlos Abud",
