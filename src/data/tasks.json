@@ -1,5 +1,16 @@
 [
   {
+    "id": "t-1776384696522",
+    "projectId": "f5fm0z0l2",
+    "projectName": "ObservaTur (Observatorio Turístico de Inteligencia de Mercados)",
+    "specialist": "Yasuhiko Roca",
+    "description": "Hardware: Nodos de Cómputo (2 Unidades)",
+    "dueDate": "2026-04-20T16:00:00.000Z",
+    "createdAt": "2026-04-17T00:11:36.522Z",
+    "priority": "Standard",
+    "status": "Pending"
+  },
+  {
     "id": "t-1776115216795",
     "projectId": "xmecj0tpv",
     "projectName": "Migracion Bantotal de la Nube a on-premise",
