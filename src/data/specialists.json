@@ -68,5 +68,12 @@
     "role": "Ventas",
     "initials": "AP",
     "active": true
+  },
+  {
+    "id": "8p43z4gmo",
+    "name": "Mario Mejia",
+    "role": "Especialista de Producto",
+    "initials": "MM",
+    "active": true
   }
 ]
