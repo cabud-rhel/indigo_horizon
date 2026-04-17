@@ -22,5 +22,11 @@
     "name": "Viceministerio de Turismo",
     "industry": "Gobierno",
     "active": true
+  },
+  {
+    "id": "xw9hvoeeu",
+    "name": "Banco Economico",
+    "industry": "Financiera",
+    "active": true
   }
 ]
