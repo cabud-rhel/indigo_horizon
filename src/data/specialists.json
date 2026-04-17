@@ -61,5 +61,12 @@
     "role": "Servicios",
     "initials": "CL",
     "active": true
+  },
+  {
+    "id": "v7sgcnh7p",
+    "name": "Alejandra Peñaranda",
+    "role": "Sales",
+    "initials": "AP",
+    "active": true
   }
 ]
