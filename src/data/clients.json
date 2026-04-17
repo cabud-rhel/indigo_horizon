@@ -34,5 +34,11 @@
     "name": "Banco Mercantil Santa Cruz",
     "industry": "Financiera",
     "active": true
+  },
+  {
+    "id": "mn51z2rmi",
+    "name": "ENTEL SA",
+    "industry": "Telecomunicaciones",
+    "active": true
   }
 ]
